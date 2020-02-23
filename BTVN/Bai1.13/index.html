@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo form và các điều khiển trên form</title>
+    <style>
+        .text-center {
+            text-align: center;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 600px;
+        }
+        th, td {
+            border: 1px solid #000;
+            margin: 0;
+            padding: 10px;
+        }
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+        }
+        .delegations input[type="text"] {
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="text-center" style="color: #a06d21;">Phiếu đăng ký tham gia chương trình khuyến mãi</h2>
+    <form action="">
+        <table>
+            <tr>
+                <td>Họ và tên </td>
+                <td>
+                    <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td>
+                    <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Điện thoại</td>
+                <td>
+                    <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Khách Việt Nam</td>
+                <td>
+                    <input type="checkbox" name="vehicle" value="planes" checked>
+                </td>
+            </tr>
+            <tr>
+                <td>Chọn tour</td>
+                <td>
+                    <select>
+                        <optgroup label="Miền Bắc">
+                            <option value="volvo">Hà Nội-Hạ Long-Sapa</option>
+                            <option value="saab">Hà Nội-Chùa Hương-Ninh BÌnh</option>
+                        </optgroup>
+                        <optgroup label="Miền Trung">
+                            <option value="volvo">Huế-Bạch Mã-Đà Nẵng</option>
+                            <option value="saab">Nha Trang-Đà Lại</option>
+                        </optgroup>
+                        <optgroup label="Miền Nam">
+                            <option value="volvo">TP.HCM-Cần Thơ-Cà Mau</option>
+                            <option value="saab">TP.HCM-Mỹ Tho</option>
+                        </optgroup>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Phương tiện</td>
+                <td>
+                    <input type="radio" name="vehicle" value="planes"> Máy bay
+                    <input type="radio" name="vehicle" value="car" checked>Xe Ô tô
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <fieldset>
+                        <legend>Số lượng đoàn khách</legend>
+                        <div class="delegations">
+                            <label>Người lớn</label>
+                            <input type="text">
+                            <label>Trẻ em</label>
+                            <input type="text">
+                        </div>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td>Ghi chú thêm</td>
+                <td>
+                    <textarea name="" id="" rows="2"></textarea>
+                </td>
+            </tr>
+
+            <tr class="text-center">
+                <td colspan="2">
+                    <button onclick="document.getElementById('success-notification').innerHTML = 'Bạn đã đăng ký thành công!'" type="button">Đồng ý</button>
+                </td>
+            </tr>
+            <tr class="text-center" style="color: #ff0000;">
+                <td colspan="2" id="success-notification"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

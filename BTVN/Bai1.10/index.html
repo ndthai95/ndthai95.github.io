@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo bảng, trộn dòng và cột</title>
+    <style>
+        .text-center {
+            text-align: center;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #cc0033;
+            margin: 0;
+            padding: 10px;
+        }
+        .header-table {
+            background-color: #cc0033;
+            color: #fff;
+            background-color: #ff0000;
+        }
+        .header-table-second {
+            color: #ff0000;
+            background-color: #ffbbbb;
+        }
+        .body-table {
+            padding: 0;
+        }
+        .body-table table {
+            margin-top: 0;
+        }
+        .body-table th,
+        .body-table td {
+            border: none;
+            border-right: 1px solid #cc0033;
+            margin: 0;
+            padding: 0;
+        }
+        .body-table td {
+            width: 50%;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr class="header-table">
+            <th>Công nghệ dầu gội dưỡng tóc mới</th>
+            <th rowspan="3">
+                <img width="100px" src="../images/dau-goi.jfif" alt="x">
+            </th>
+        </tr>
+        <tr>
+            <th style="padding: 2px"></th>
+        </tr>
+        <tr class="header-table-second">
+            <th>
+                Tỏa sáng cùng DOUBLE RICH
+            </th>
+        </tr>
+        <tr>
+            <td colspan="2" class="body-table">
+                <table>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li class="content-title">Sản phẩm khuyễn mãi
+                                    <ul class="contents">
+                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                                    </ul>
+                                </li>
+                                <li class="content-title">Đối tượng tham gia
+                                    <ul class="contents">
+                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, temporibus. Beatae accusantium culpa dolorem nam obcaecati, fugiat, enim quaerat sunt tempore expedita autem recusandae necessitatibus, dolores quae veritatis laborum tenetur.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li class="content-title">Sản phẩm khuyễn mãi
+                                    <ol class="contents">
+                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

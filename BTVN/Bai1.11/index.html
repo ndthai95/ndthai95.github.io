@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo form và các điều khiển trên form</title>
+    <style>
+        .text-center {
+            text-align: center;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 400px;
+        }
+        th, td {
+            border: 1px solid #000;
+            margin: 0;
+            padding: 10px;
+        }
+        input {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="text-center" style="color: #a06d21;">Đăng nhập</h2>
+    <form action="">
+        <table>
+            <tr>
+                <td>Mã người dùng: </td>
+                <td>
+                    <input type="text" id="userId">
+                </td>
+            </tr>
+            <tr>
+                <td>Mật khẩu: </td>
+                <td>
+                    <input type="password">
+                </td>
+            </tr>
+            <tr class="text-center">
+                <td colspan="2">
+                    <button onclick="document.getElementById('user-id').innerHTML = document.getElementById('userId').value" type="button">Đồng ý</button>
+                </td>
+            </tr>
+            <tr class="text-center">
+                <td colspan="2" id="user-id"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
