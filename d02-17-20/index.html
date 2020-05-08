@@ -9,6 +9,13 @@
         background-image: url(./images/natural-background.jpg);
         background-repeat: no-repeat;
     } */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    tr, td {
+        border: 1px solid black;
+    }
 </style>
 <body>
     <button onclick="document.location='https://google.com'">Google</button>
@@ -42,6 +49,84 @@
     <p>Age: <b>18</b></p>
     <p>Favorites: <b>Swimming</b></p>
     <p>Sologan: <mark>Make yourself become the best seller</mark> </p>
+
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Class</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Name 1</td>
+            <td>Class 1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Name 2</td>
+            <td>Class 2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Name 3</td>
+            <td>Class 3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Name 4</td>
+            <td>Class 4</td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+    <br>
+
+    <fieldset>
+        <legend>Login</legend>
+        <form action="">
+            <label for="">User name</label>
+            <input type="text">
+            <br>
+            <br>
+            <label for="">Password</label>
+            <input type="password">
+            <br>
+            <br>
+            <p id="success" style="background-color: blanchedalmond; display: none;">Đăng nhập thành công</p>
+            <br>
+            <input type="submit" value="Submit" onclick="onSubmit()">
+        </form>
+    </fieldset>
+
+    <header>
+        <h1>This is header</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Books</a></li>
+        </ul>
+    </nav>
+    <article>
+        <aside>This is aside</aside>
+        <section>
+            <h3>Heading</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, corrupti quo? Unde optio animi praesentium ipsa adipisci harum ad, et rem blanditiis, dignissimos nulla earum dolorum accusantium commodi itaque dolorem!</p>
+        </section>
+    </article>
+    <footer>This is footer</footer>
+    <audio src=""></audio>
+
+    <script>
+        function onSubmit() {
+            event.preventDefault();
+            // alert('Hello')
+            document.getElementById('success').style.display = 'block';
+        }
+    </script>
     
 </body>
 </html>
