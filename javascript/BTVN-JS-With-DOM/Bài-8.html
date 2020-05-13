@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var d, hours, minutes, seconds = '';
+        var title = document.querySelector('title')
+
+        function showTime() {
+            d = new Date();
+            hours = d.getHours();
+            minutes = d.getMinutes();
+            seconds = d.getSeconds();
+            title.innerText = hours + ':' + minutes + ':'+ seconds
+            setTimeout(showTime, 1000)
+        }
+        showTime();
+    </script>
+</body>
+</html>

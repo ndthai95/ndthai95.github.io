@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .showLess,
+        .showMore {
+            display: none;
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>
+    <span class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus repellendus deleniti non velit autem! Architecto repudiandae quae deleniti soluta hic tempore, alias aliquam repellendus nesciunt unde, ducimus, totam perspiciatis ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium deserunt officiis exercitationem excepturi eos ea corrupti doloribus ullam maiores. Doloribus maxime voluptate deleniti cumque culpa fuga ut? Sapiente, obcaecati ipsam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta fugit et magnam itaque, voluptatum cumque quasi voluptatem! Corrupti ducimus provident ipsa vel qui sint. Excepturi vitae impedit officiis eligendi debitis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, iure ut! Quo itaque tempore est placeat deleniti obcaecati repellendus doloremque, aspernatur dolores impedit facilis, aut labore maxime. Dolor, libero aperiam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, rem rerum repudiandae atque, architecto tempore iste placeat quo recusandae officia dolores nemo voluptate vel voluptatum, eum voluptatibus numquam deleniti laboriosam.</span> 
+    <span class="showLess">showless</span>
+    <span class="showMore">show more</span>
+    </p>
+
+
+    <script>
+        var maxLength = 200;
+        var text = document.querySelector('.text');
+        var showLess = document.querySelector('.showLess');
+        var showMore = document.querySelector('.showMore');
+        var fullText = text.innerText;
+        var shortText = fullText.substr(0, maxLength);
+        if (fullText.length > maxLength) {
+            text.innerText = shortText + '...';
+            showHide(showLess, showMore);
+        }
+        showMore.onclick = function() {
+            text.innerText = fullText + ' ';
+            showHide(showMore, showLess);
+        }
+        showLess.onclick = function() {
+            text.innerText = shortText + '...';
+            showHide(showLess, showMore);
+        }
+
+        function showHide(hide, show) {
+            hide.style.display = 'none';
+            show.style.display = 'inline-block';
+        }
+    </script>
+</body>
+</html>

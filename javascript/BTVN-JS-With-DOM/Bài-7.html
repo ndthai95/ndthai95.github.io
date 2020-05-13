@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Chọn màu:</label>
+    <select name="" id="color">
+        <option value="red">Red</option>
+        <option value="blue">blue</option>
+        <option value="brown">brown</option>
+        <option value="lavender">lavender</option>
+    </select>
+
+    <script>
+        var select = document.getElementById('color')
+        var body = document.querySelector('body')
+        body.style.backgroundColor = select.value;
+        select.onchange = function() {
+            body.style.backgroundColor = select.value;
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Đồng hồ điện tử: </h1>
+    <h2 id=oclock></h2>
+    <script>
+        var d, hours, minutes, seconds, dow, days, months, years  = '';
+        var oclock = document.getElementById('oclock')
+
+        function showTime() {
+            d = new Date();
+            hours = d.getHours();
+            minutes = d.getMinutes();
+            seconds = d.getSeconds();
+            days = d.getDate();
+            months = d.getMonth()+1;
+            years = d.getFullYear();
+            dow = d.getDay();
+            switch (dow) {
+                case 0:
+                    dow = "Chủ nhật";
+                    break;
+                case 1:
+                    dow = "Thứ hai";
+                    break;
+                case 2:
+                    dow = "Thứ ba";
+                    break;
+                case 3:
+                    dow = "Thứ tư";
+                    break;
+                case 4:
+                    dow = "Thứ năm";
+                    break;
+                case 5:
+                    dow = "Thứ sáu";
+                    break;
+                case 6:
+                    dow = "Thứ bảy";
+                    break;
+            }
+            oclock.innerText = hours + ':' + minutes + ':'+ seconds + '-'+ dow + ' ' + days + '/' + months + '/' + years
+            setTimeout(showTime, 1000)
+        }
+        showTime();
+    </script>
+</body>
+</html>
