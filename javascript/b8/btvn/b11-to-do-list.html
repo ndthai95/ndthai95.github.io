@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        ul {
+            list-style: none;
+        }
+        .d-none {
+            display: none !important;
+        }
+        .d-block {
+            display: block !important;
+        }
+        .todo-list-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 200px;
+        }
+        .todo-list-container input[type="button"]{
+            padding: 4px 8px;
+            cursor: pointer;
+        }
+        .todo-list-row {
+            display: flex;
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+        .todo-list-col {
+            width: 50%;
+            padding: 0 15px;
+        }
+        .todo-list-group {
+            margin-bottom: 20px;
+        }
+        .todo-list-form .todo-list-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .todo-list-form .todo-list-group input[type="text"] {
+            display: block;
+            width: 100%;
+            padding: 8px;
+        }
+        .todo-list-contents {
+            border: 1px solid gray;
+            margin-left: 20px;
+            padding: 15px;
+        }
+        .todo-list-contents-title {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid gray;
+        }
+        .todo-list-contents-list-job .todo-list-group {
+            display: flex;
+            align-items: center;
+        }
+        .todo-list-contents-list-job .todo-list-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .todo-list-contents-list-job li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid gray;
+        }
+        .todo-list-button {
+            width: 100%;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-list-container">
+        <div class="todo-list-row">
+            <div class="todo-list-col">
+                <form action="" class="todo-list-form">
+                    <div class="todo-list-group todo-list-topic">
+                        <label for="">Nhập chủ đề: </label>
+                        <input type="text" name="" id="topic">
+                    </div>
+                    <div class="todo-list-group todo-list-job d-none">
+                        <label for="">Những việc bạn cần làm:</label>
+                        <input type="text" name="" id="list-job">
+                    </div>
+                    <div class="todo-list-group submit-button">
+                        <input type="button" value="Tạo" class="create" onclick="createTopic(event)">
+                        <input type="button" value="Them" class="add-job d-none" onclick="addJobs()">
+                    </div>
+                </form>
+            </div>
+            <div class="todo-list-col">
+                <div class="todo-list-group-contents">
+                    <div class="todo-list-contents">
+                        <h2 class="todo-list-contents-title">Chủ đề</h2>
+                        <ul class="todo-list-contents-list-job">
+                            <li>
+                                <div class="todo-list-group">
+                                    <input type="checkbox" name="" id="">
+                                    <label for="">Việc làm 1</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        var create = document.querySelector('.create');
+        var topicInput = document.querySelector('#topic');
+        var todoListContents = document.querySelector('.todo-list-contents');
+        var addJob = document.querySelector('.add-job');
+        var inputTopic = document.querySelector('.todo-list-topic');
+        var inputJobs = document.querySelector('.todo-list-job');
+        var inputTodo = document.querySelector('#list-job');
+        var jobTitle = document.querySelector('.todo-list-contents-title');
+        var jobContents = document.querySelector('.todo-list-contents-list-job');
+        var listJobs = [];
+
+        function createTopic(event) {
+            if (topicInput.value) {
+                listJobs.push({
+                    id: listJobs.length + 1,
+                    topic: topicInput.value,
+                    todo: []
+                })
+                event.currentTarget.classList.add("d-none");
+                inputTopic.classList.add("d-none");
+                addJob.classList.remove("d-none");
+                inputJobs.classList.remove("d-none");
+                showTodoList(listJobs);
+            } else {
+                alert('Ban chua nhap chu de')
+            }
+        }
+        function addJobs() {
+            if (inputTodo.value) {
+                listJobs[0].todo.push(inputTodo.value)
+            }
+            inputTodo.value = '';
+            showTodoList(listJobs);
+            
+        }
+        function showTodoList(listJobs) {
+            jobContents.innerHTML = ''
+            listJobs.forEach(job => {
+                jobTitle.innerText = job.topic
+                job.todo.forEach((item, index) => {
+                    jobContents.innerHTML += `
+                    <li>
+                        <div class="todo-list-group">
+                            <input type="checkbox" name="" id="item-${index}">
+                            <label for="">${item}</label>
+                        </div>
+                        <div class="todo-list-button">
+                            <input type="button" value="Xóa" onclick="deleteJob(${index})">
+                        </div>
+                    </li>`
+                })
+            });
+        }
+        function editJob(index) {
+            console.log(index);
+        }
+        function deleteJob(index) {
+            listJobs[0].todo.splice(index, 1);
+            alert("Xoa thanh cong");
+            showTodoList();
+        }
+    </script>
+</body>
+</html>

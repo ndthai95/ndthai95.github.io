@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            max-width: 300px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        input {
+            padding: 4px 6px;
+            display: block;
+            margin-bottom: 30px;
+        }
+        #totalPrice {
+            border: 1px solid;
+            padding: 5px 8px;
+            min-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <input type="number" name="" id="quantity" placeholder="quantity">
+        <input type="number" name="" id="price" placeholder="price">
+        <input type="button" value="Submit" onclick="submit()">
+        <div id="totalPrice"></div>
+    </div>
+
+
+    <script>
+        var quantity = document.getElementById('quantity');
+        var price = document.getElementById('price');
+        var totalPrice = document.getElementById('totalPrice');
+        var total = 0;
+        function submit() {
+            if (quantity.value && price.value && price.value > 0 && quantity.value > 0) {
+                total = quantity.value * price.value
+                totalPrice.innerHTML = total;
+                quantity.value = '';
+                price.value = '';
+            } else {
+                alert("Please input price and quantity")
+            }
+        }
+    </script>
+</body>
+</html>

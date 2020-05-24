@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="treasure" width="500" height="500" style="border:1px solid #d3d3d3;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </canvas>
+    <!-- <img id="pacman" src="../b9/image/download.png" width="50" height="50" alt=""> -->
+
+    <script>
+        // var img = document.getElementById("pacman");
+        var img = new Image;
+        img.src = '../b9/image/download.png';
+        var img2 = new Image;
+        img2.src = '../b9/image/dot.png';
+        var matrix = [
+            [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ];
+        var numberOfTreasure = matrix.reduce((result, matrixX) => {
+            return result + matrixX.reduce((resultX, value) => {
+                if(value == 1) {
+                    resultX++
+                }
+                return resultX
+            }, 0)
+        }, 0)
+        function checking() {
+            for (let i = 0; i < matrix.length; i++) {
+                for (let j = 0; j < matrix.length; j++) {
+                    console.log(i, j, user.userY, user.userX);
+                    
+                    // if (matrix[i][j] === 1 && user.userX == j && user.userY == i) {
+                    //     user.userCollecting();
+                    //     console.log(user.userCollecting());
+                        
+                    // }
+                }
+                
+            }
+        }
+        
+        // var positionX, positionY;
+        // var matrix1 = [];
+        var user = {
+            img: img,
+            userX: 0,
+            userY: 0,
+            userWidth: 50,
+            userHeight: 50,
+            collectedTreasure: 0,
+            draw: (ctx) => {
+                ctx.drawImage(this.img, this.userX, this.userY, this.userWidth, this.userHeight)
+            },
+            moveLeft: function() {
+                checking();
+                if (this.userX < 0) {
+                    this.userX = 0
+                }
+            },
+            moveRight: function() {
+                checking();
+                if (this.userX > 450) {
+                    this.userX = 450
+                }
+            },
+            moveUp: function() {
+                checking();
+                if (this.userY < 0) {
+                    this.userY = 0
+                }
+            },
+            moveDown: function() {
+                checking();
+                if (this.userY > 450) {
+                    this.userY = 450
+                }
+            },
+            userCollecting: function() {
+                this.collectedTreasure ++;
+            }
+        }
+        document.addEventListener('keydown', (event) => {
+            switch (event.keyCode) {
+                case 37:
+                    // console.log('left');
+                    user.userX -= 50;
+                    user.moveLeft();
+                    break;
+                case 38:
+                    // console.log('up');
+                    user.userY -= 50;
+                    user.moveUp();
+                    break;
+                case 39:
+                    // console.log('right');
+                    user.userX += 50;
+                    user.moveRight();
+                    break;
+                case 40:
+                    // console.log('down');
+                    user.userY += 50;
+                    user.moveDown();
+                    break;
+            }
+
+            // console.log(user.userX);
+            // console.log(user.userY);
+            // console.log(matrix1[1][0]);
+
+            // for (let i = 0; i < matrix1.length; i++) {
+            //     // for (let j = 0; j < matrix1[i].length; j++) {
+                    
+            //     // }
+            //     console.log(matrix1[i]);
+                
+            //     // console.log(matrix[1][0]);
+            //     // console.log(matrix[1][1]);
+                
+            //     // if (matrix[i][0] === user.userY && matrix[i][1] === user.userX) {
+            //     //     console.log("ok");
+                    
+            //     // }
+            // }
+        });
+        function draw(ctx) {
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    if (matrix[i][j] === 1 ) {
+                        ctx.drawImage(img2, j*50, i*50, 50, 50)
+                    }
+                }
+                
+            }
+        }
+        // function getMatrix1() {
+        //     for (let i = 0; i < 9; i++) {
+        //         for (let j = 0; j < 9; j++) {
+        //             if (matrix[i][j] === 1 ) {
+        //                 matrix1.push([j*50, i*50])
+        //             }
+        //         }
+                
+        //     }
+        // }
+            
+        window.onload = () => {
+            // getMatrix1();
+            setInterval(() => {
+                var c = document.getElementById('treasure');
+                var ctx = c.getContext('2d')
+                ctx.fillStyle = '#00FF00';
+                ctx.fillRect(0, 0, 500, 500);
+                ctx.drawImage(img, user.userX, user.userY, user.userWidth, user.userHeight)
+                // user.draw(ctx);
+                draw(ctx)
+            }, 1);
+        }
+    </script>
+</body>
+</html>

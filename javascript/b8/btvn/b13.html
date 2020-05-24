@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đồng hồ bấm giờ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .stopwatch {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: #E8E8E8;
+            border-radius: 50%;
+            border: 1px solid #000;
+        }
+        .show-time {
+            width: 200px;
+            background-color: #fff;
+            margin: 65px auto 0;
+            display: flex;
+            justify-content: center;
+            border: 1px solid #000;
+        }
+        .show-time span {
+            width: calc(100%/3);
+            text-align: center;
+            font-size: 50px;
+        }
+        .result-wrap {
+            width: 200px;
+            height: 35px;
+            margin: 10px auto 0;
+            display: flex;
+            justify-content: flex-end;
+            text-align: center;
+        }
+        .result {
+            width: 100px;
+            height: 100%;
+            background-color: #fff;
+            font-size: 30px;
+            border: 1px solid #000;
+        }
+        .list-time {
+            width: 200px;
+            min-height: 30px;
+            background-color: #F0F0F0;
+            margin: 10px auto 0;
+            list-style: none;
+            overflow: auto;
+            display: flex;
+        }
+        .list-time li {
+            display: inline-block;
+            margin: 5px;
+        }
+        .button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button button {
+            background-color: #BEBEBE;
+            border: 1px solid #000;
+            height: 30px;
+            padding: 0 3px;
+            margin: 0 3px;
+            outline: none;
+        }
+        .button button:hover {
+            background-color: #A9A9A9;
+            cursor: pointer;
+        }
+        .save {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="stopwatch">
+        <div class="show-time">
+            <span class="minutes">0</span>
+            <span>:</span>
+            <span class="seconds">0</span>
+        </div>
+        <div class="result-wrap">
+            <div class="result"></div>
+        </div>
+        <ul class="list-time"></ul>
+        <div class="button">
+            <button class="start" onclick="start()">start</button>
+            <button class="stop" onclick="stop()">Stop</button>
+            <button class="save" onclick="save()">Save</button>
+        </div>
+    </div>
+
+
+    <script>
+        var minute = 0, second = 0;
+        var aTime;
+        var currentTime = '';
+        var listTime = [];
+        var minutes = document.querySelector('.minutes');
+        var seconds = document.querySelector('.seconds');
+        var result = document.querySelector('.result');
+        var times = document.querySelector('.list-time');
+        var saves = document.querySelector('.save');
+        console.log(second);
+        
+
+        function start() {
+            second++;
+            if (second > 59) {
+                minute++;
+                second = 0;
+            }
+            if (minute > 59 && second > 59) {
+                minute = 0;
+                second = 0;
+            }
+            minutes.innerText = minute;
+            seconds.innerText = second;
+            aTime = setTimeout(start, 1000);
+            saves.style.pointerEvents = 'none';
+            saves.style.opacity = '0.5';
+        }
+
+        function stop() {
+            clearTimeout(aTime);
+            currentTime =  minutes.innerText + ':' + seconds.innerText;
+            result.innerText = currentTime;
+            saves.style.pointerEvents = 'auto';
+            saves.style.opacity = '1';
+        }
+
+        function save() {
+            second = 0;
+            minute = 0;
+            times.innerHTML += '<li>' +result.innerText +'</li>';
+            saves.style.pointerEvents = 'none';
+            saves.style.opacity = '0.5';
+        }
+    </script>
+</body>
+</html>
